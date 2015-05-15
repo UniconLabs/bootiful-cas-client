@@ -1,0 +1,3 @@
+cas:
+  server.url-prefix:  https://dk.example.org:8143/cas
+  client.service-url: http://localhost:8080

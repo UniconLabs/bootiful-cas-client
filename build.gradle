@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.3.RELEASE'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management' 
+
+jar {
+    baseName = 'cas-client-demo'
+    version = '1.0.0-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.codehaus.groovy:groovy')
+
+    compile('net.unicon.cas:cas-client-autoconfig-support:1.0.0-M1')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
