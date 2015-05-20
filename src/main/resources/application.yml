@@ -1,3 +1,19 @@
 cas:
-  server.url-prefix:  https://dk.example.org:8143/cas
-  client.service-url: http://localhost:8080
+  #Required properties
+  server-url-prefix:  https://dk.example.org:8143/cas
+  client-service-url: http://localhost:8080
+
+  #Optional properties
+  #server-login-url: /login
+  #authentication-url-patterns: [/protected1, /protected2]
+  #validation-url-patterns: [/protected1, /protected2]
+  #request-wrapper-url-patterns: [/pretected1, /protected2]
+  #assertion-thread-local-url-patterns: [/*]
+
+  #gateway: true
+  #use-session: false
+  #redirect-after-validation: false
+  #allowed-proxy-chains: ['https://localhost:8080/proxy1', 'https://localhost:8080/proxy2']
+  #proxy-callback-url: https://localhost:8080/proxy-callback
+  #proxy-receptor-url: /proxy-callback
+  #accept-any-proxy: true
