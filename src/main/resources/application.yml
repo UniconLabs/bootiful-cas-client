@@ -1,7 +1,7 @@
 cas:
   #Required properties
   server-url-prefix:  https://dk.example.org:8143/cas
-  client-service-url: http://localhost:8080
+  client-service-url: https://dk.example.org:8443
 
   #Optional properties
   #server-login-url: /login
@@ -13,7 +13,30 @@ cas:
   #gateway: true
   #use-session: false
   #redirect-after-validation: false
-  #allowed-proxy-chains: ['https://localhost:8080/proxy1', 'https://localhost:8080/proxy2']
+  #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://localhost:8080/proxy2']
   #proxy-callback-url: https://localhost:8080/proxy-callback
   #proxy-receptor-url: /proxy-callback
   #accept-any-proxy: true
+
+
+spring:
+  thymeleaf:
+    # For dev-time hot reloading of templates. Should be disabled in production
+    cache: false
+    prefix: classpath:/templates
+
+#Sample embedded servlet container SSL config. Change as appropriate for your local deployment environment
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: /Users/dima767/.keystore
+    key-store-password: changeit
+    trust-store: /Users/dima767/.keystore
+    trust-store-password: changeit
+  #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
+  #context_parameters.renew: true
+
+
+logging.level:
+    org.jasig.cas: DEBUG
