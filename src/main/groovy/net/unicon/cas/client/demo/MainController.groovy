@@ -17,9 +17,15 @@ import javax.servlet.http.HttpServletResponse
 class MainController extends CasClientConfigurerAdapter {
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
-    void index(HttpServletRequest request, HttpServletResponse response, Model model) {
+    def index(HttpServletRequest request, HttpServletResponse response, Model model) {
+        'index'
+    }
+
+    @RequestMapping(value = '/protected1', method = RequestMethod.GET)
+    def protected1(HttpServletRequest request, Model model) {
         AttributePrincipal principal = request.userPrincipal
-        response.writer.println("You are logged in to CAS as [${principal}]")
+        model.addAttribute('principal', principal)
+        'protected1'
     }
 
 

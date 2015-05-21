@@ -5,7 +5,7 @@ cas:
 
   #Optional properties
   #server-login-url: /login
-  #authentication-url-patterns: [/protected1, /protected2]
+  authentication-url-patterns: [/protected1, /protected2]
   #validation-url-patterns: [/protected1, /protected2]
   #request-wrapper-url-patterns: [/pretected1, /protected2]
   #assertion-thread-local-url-patterns: [/*]
@@ -20,7 +20,7 @@ cas:
 
 
 spring:
-  thymeleaf:
+  thymelea:
     # For dev-time hot reloading of templates. Should be disabled in production
     cache: false
     prefix: classpath:/templates
@@ -35,7 +35,7 @@ server:
     trust-store: /Users/dima767/.keystore
     trust-store-password: changeit
   #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
-  #context_parameters.renew: true
+  #context-parameters.renew: true
 
 
 logging.level:

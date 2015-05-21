@@ -34,6 +34,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.codehaus.groovy:groovy')
 
+    //compile "org.thymeleaf:thymeleaf-spring4"
+    compile "org.webjars:bootstrap:3.3.4"
+
     compile('net.unicon.cas:cas-client-autoconfig-support:1.0.0-M2-SNAPSHOT')
 }
 
