@@ -5,7 +5,6 @@ cas:
   client-host-url: https://dk.example.org:8443
 
   #Optional properties
-  #server-login-url: /login
   authentication-url-patterns: [/protected, /protected2]
   #validation-url-patterns: [/protected, /protected2]
   #request-wrapper-url-patterns: [/protected, /protected2]
@@ -21,7 +20,7 @@ cas:
 
 
 spring:
-  thymelea:
+  thymeleaf:
     # For dev-time hot reloading of templates. Should be disabled in production
     cache: false
     prefix: classpath:/templates
