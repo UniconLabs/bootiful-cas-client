@@ -21,11 +21,11 @@ class MainController extends CasClientConfigurerAdapter {
         'index'
     }
 
-    @RequestMapping(value = '/protected1', method = RequestMethod.GET)
+    @RequestMapping(value = '/protected', method = RequestMethod.GET)
     def protected1(HttpServletRequest request, Model model) {
         AttributePrincipal principal = request.userPrincipal
         model.addAttribute('principal', principal)
-        'protected1'
+        'protected'
     }
 
 
@@ -35,7 +35,7 @@ class MainController extends CasClientConfigurerAdapter {
     @Override
     void configureValidationFilter(FilterRegistrationBean validationFilter) {
         //This is Groovy. Below this, is the example (commented out) on how to do it in Java lang.
-        validationFilter.initParameters.millisBetweenCleanUps = '130000'
+        validationFilter.initParameters.millisBetweenCleanUps = '120000'
         //validationFilter.getInitParameters().put("millisBetweenCleanUps", "120000");
     }
 

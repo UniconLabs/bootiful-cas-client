@@ -1,20 +1,21 @@
 cas:
   #Required properties
-  server-url-prefix:  https://dk.example.org:8143/cas
-  client-service-url: https://dk.example.org:8443
+  cas-server-url-prefix: https://dk.example.org:8143/cas
+  cas-server-login-url: https://dk.example.org:8143/cas/login
+  client-host-url: https://dk.example.org:8443
 
   #Optional properties
   #server-login-url: /login
-  authentication-url-patterns: [/protected1, /protected2]
-  #validation-url-patterns: [/protected1, /protected2]
-  #request-wrapper-url-patterns: [/pretected1, /protected2]
+  authentication-url-patterns: [/protected, /protected2]
+  #validation-url-patterns: [/protected, /protected2]
+  #request-wrapper-url-patterns: [/protected, /protected2]
   #assertion-thread-local-url-patterns: [/*]
 
   #gateway: true
   #use-session: false
   #redirect-after-validation: false
-  #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://localhost:8080/proxy2']
-  #proxy-callback-url: https://localhost:8080/proxy-callback
+  #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://dk.example.org:8443/proxy2']
+  #proxy-callback-url: https://dk.example.org:8443/proxy-callback
   #proxy-receptor-url: /proxy-callback
   #accept-any-proxy: true
 

@@ -8,14 +8,32 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
 
 * Clone this repository
 
-* Change `server.url-prefix` property in `src/main/resources/application.yml` pointing to the desired CAS server. For example:
+* Change 3 required URL properties in `src/main/resources/application.yml` pointing to the desired CAS server and client host. For example:
 
   ```yaml
   cas:
-    server.url-prefix:  https://mycas.example.org/cas
-    client.service-url: http://localhost:8080
+    #Required properties
+    cas-server-url-prefix: https://localhost:8143/cas
+    cas-server-login-url: https://localhost:8143/cas/login
+    client-host-url: https://localhost:8443
   ```
+
+* Change SSL settings in `src/main/resources/application.yml` pointing to your local keystore and truststore. For example:
+ 
+ ```yaml
+ server:
+   port: 8443
+   ssl:
+     enabled: true
+     key-store: /Users/dima767/.keystore
+     key-store-password: changeit
+     trust-store: /Users/dima767/.keystore
+     trust-store-password: changeit
+ ```
+ 
+  > Note: you also might need to do the self-cert generation/importing dance into the JVM's trustore for this CAS client/server SSL handshake to 
+  work properly. 
 
 * From the command line run: `./gradlew bootRun`
 
-* Visit `http://localhost:8080` in the web browser of choice (based on the `client.service-url` property in `application.yml`) and enjoy your CASyfied app!
+* Visit `https://localhost:8443` in the web browser of choice and enjoy the CASyfied Spring Boot app! 

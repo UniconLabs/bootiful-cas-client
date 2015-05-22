@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:include="/fragments/layout :: htmlhead" th:with="title='Bootiful CAS client sample app'"></head>
+<head th:include="/fragments/layout :: htmlhead" th:with="title='Protected area'"></head>
 
 
 <body role="document">
@@ -10,10 +10,8 @@
 
 <div class="container">
     <div class="starter-template">
-        <h2>Welcome to CAS-enabled Spring Boot starter app</h2>
+        <h2>You are in protected area. You are logged in as (<span th:text="${principal}">(principal)</span>)</h2>
     </div>
-
-    <a th:href="@{/protected}">Protected Area</a>
 
 </div>
 
