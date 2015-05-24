@@ -13,8 +13,8 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
   ```yaml
   cas:
     #Required properties
-    cas-server-url-prefix: https://localhost:8143/cas
-    cas-server-login-url: https://localhost:8143/cas/login
+    server-url-prefix: https://localhost:8143/cas
+    server-login-url: https://localhost:8143/cas/login
     client-host-url: https://localhost:8443
   ```
 

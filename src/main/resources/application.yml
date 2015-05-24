@@ -1,7 +1,7 @@
 cas:
   #Required properties
-  cas-server-url-prefix: https://dk.example.org:8143/cas
-  cas-server-login-url: https://dk.example.org:8143/cas/login
+  server-url-prefix: https://dk.example.org:8143/cas
+  server-login-url: https://dk.example.org:8143/cas/login
   client-host-url: https://dk.example.org:8443
 
   #Optional properties
@@ -23,7 +23,6 @@ spring:
   thymeleaf:
     # For dev-time hot reloading of templates. Should be disabled in production
     cache: false
-    prefix: classpath:/templates
 
 #Sample embedded servlet container SSL config. Change as appropriate for your local deployment environment
 server:
