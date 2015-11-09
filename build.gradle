@@ -1,19 +1,17 @@
 buildscript {
     ext {
-        springBootVersion = '1.2.3.RELEASE'
+        springBootVersion = '1.2.7.RELEASE'
     }
     repositories {
         jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
-apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'cas-client-demo'
@@ -24,8 +22,8 @@ targetCompatibility = 1.8
 
 repositories {
     jcenter()
-    //Remove later
-    mavenLocal()
+    //For local dev against cas-client-autoconfig-support. Do not uncomment this otherwise.
+    //mavenLocal()
 }
 
 
@@ -34,12 +32,11 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.codehaus.groovy:groovy')
 
-    //compile "org.thymeleaf:thymeleaf-spring4"
     compile "org.webjars:bootstrap:3.3.4"
 
     compile('net.unicon.cas:cas-client-autoconfig-support:1.0.0-GA')
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
+    gradleVersion = '2.8'
 }
