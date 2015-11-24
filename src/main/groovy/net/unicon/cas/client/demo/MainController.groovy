@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Controller
-@EnableCasClient
+@EnableCasClient(validationType = EnableCasClient.ValidationType.CAS3)
 class MainController extends CasClientConfigurerAdapter {
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
@@ -42,12 +42,13 @@ class MainController extends CasClientConfigurerAdapter {
     /**
      * Example of customizing the filter config for any 'exotic' properties that are not exposed via properties file
      */
-    @Override
+    /*@Override
     void configureAuthenticationFilter(FilterRegistrationBean authenticationFilter) {
         //This is Groovy. Below this, is the example (commented out) on how to do it in Java lang.
         authenticationFilter.initParameters.artifactParameterName = 'casTicket'
         authenticationFilter.initParameters.serviceParameterName = 'targetService'
+
         //authenticationFilter.getInitParameters().put("artifactParameterName", "casTicket");
         //authenticationFilter.getInitParameters().put("serviceParameterName", "targetService");
-    }
+    }*/
 }

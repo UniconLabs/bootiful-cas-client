@@ -6,7 +6,7 @@ cas:
 
   #Optional properties
   authentication-url-patterns: [/protected, /protected2]
-  #validation-url-patterns: [/protected, /protected2]
+  validation-url-patterns: [/protected, /protected2]
   #request-wrapper-url-patterns: [/protected, /protected2]
   #assertion-thread-local-url-patterns: [/*]
 
