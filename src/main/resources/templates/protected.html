@@ -13,6 +13,17 @@
         <h2>You are in protected area. You are logged in as (<span th:text="${principal}">(principal)</span>)</h2>
     </div>
 
+    <div th:if="${not #maps.isEmpty(principal.attributes)}">
+        <h2>Principal Attributes</h2>
+        <table class="table table-striped">
+            <tr th:each="attr : ${principal.attributes}">
+                <td th:text="${attr.key}">Attribute Key</td>
+                <td th:text="${attr.value}">Attribute Value</td>
+            </tr>
+        </table>
+
+    </div>
+
 </div>
 
 </body>

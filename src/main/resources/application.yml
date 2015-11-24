@@ -24,9 +24,13 @@ spring:
     # For dev-time hot reloading of templates. Should be disabled in production
     cache: false
 
-#Sample embedded servlet container SSL config. Change as appropriate for your local deployment environment
+#Sample embedded servlet container SSL config and session tracking mode. Change as appropriate for your local deployment environment
 server:
   port: 8443
+  session:
+    cookie:
+      http-only: true
+    tracking-modes: COOKIE
   ssl:
     enabled: true
     key-store: /Users/dima767/.keystore
