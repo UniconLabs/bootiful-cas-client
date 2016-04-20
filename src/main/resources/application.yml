@@ -10,6 +10,9 @@ cas:
   #request-wrapper-url-patterns: [/protected, /protected2]
   #assertion-thread-local-url-patterns: [/*]
 
+  #One of CAS3, CAS, or SAML. The default is CAS3 if not explicitly specified
+  #validation-type: SAML
+
   #gateway: true
   #use-session: false
   #redirect-after-validation: false

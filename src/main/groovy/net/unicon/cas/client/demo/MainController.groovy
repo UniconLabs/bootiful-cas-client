@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Controller
-@EnableCasClient(validationType = EnableCasClient.ValidationType.CAS3)
+@EnableCasClient
 class MainController extends CasClientConfigurerAdapter {
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
