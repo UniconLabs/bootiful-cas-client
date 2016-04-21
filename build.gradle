@@ -32,7 +32,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.codehaus.groovy:groovy')
     compile "org.webjars:bootstrap:3.3.4"
-    compile('net.unicon.cas:cas-client-autoconfig-support:1.2.0')
+    compile('net.unicon.cas:cas-client-autoconfig-support:1.2.0-GA')
 }
 
 task wrapper(type: Wrapper) {
