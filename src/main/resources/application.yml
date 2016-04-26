@@ -14,13 +14,14 @@ cas:
   #validation-type: SAML
 
   #gateway: true
-  #use-session: false
+  use-session: false
   #redirect-after-validation: false
   #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://dk.example.org:8443/proxy2']
   #proxy-callback-url: https://dk.example.org:8443/proxy-callback
   #proxy-receptor-url: /proxy-callback
   #accept-any-proxy: true
 
+casLogoutUrl: https://dk.example.org:8143/cas/logout?service=https://dk.example.org:8443
 
 spring:
   thymeleaf:
