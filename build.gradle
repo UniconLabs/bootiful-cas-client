@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.3.3.RELEASE'
+        springBootVersion = '1.3.5.RELEASE'
     }
     repositories {
         jcenter()
@@ -14,8 +14,8 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'cas-client-demo'
-    version = '1.2.0'
+    baseName = 'bootiful-cas-client-demo'
+    version = '1.3.0'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -23,7 +23,7 @@ targetCompatibility = 1.8
 repositories {
     jcenter()
     //For local dev against cas-client-autoconfig-support. Do not uncomment this otherwise.
-    //mavenLocal()
+    mavenLocal()
 }
 
 
@@ -32,7 +32,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.codehaus.groovy:groovy')
     compile "org.webjars:bootstrap:3.3.4"
-    compile('net.unicon.cas:cas-client-autoconfig-support:1.2.0-GA')
+    compile('net.unicon.cas:cas-client-autoconfig-support:1.3.0-GA')
 }
 
 task wrapper(type: Wrapper) {
