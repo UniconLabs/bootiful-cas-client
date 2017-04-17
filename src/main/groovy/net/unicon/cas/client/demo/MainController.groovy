@@ -4,7 +4,7 @@ import net.unicon.cas.client.configuration.CasClientConfigurerAdapter
 import net.unicon.cas.client.configuration.EnableCasClient
 import org.jasig.cas.client.authentication.AttributePrincipal
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.context.embedded.FilterRegistrationBean
+import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping

@@ -28,14 +28,12 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
    ssl:
      enabled: true
      key-store: /Users/dima767/.keystore
-     key-store-password: changeit
-     trust-store: /Users/dima767/.keystore
-     trust-store-password: changeit
+     key-store-password: changeit     
  ```
  
   > Note: you also might need to do the self-cert generation/importing dance into the JVM's trustore for this CAS client/server SSL handshake to 
   work properly. 
 
-* From the command line run: `./gradlew bootRun`
+* From the command line run: `./gradlew clean bootRun`
 
 * Visit `https://localhost:8443` in the web browser of choice and enjoy the CASyfied Spring Boot app! 

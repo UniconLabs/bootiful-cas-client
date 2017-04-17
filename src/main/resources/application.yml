@@ -11,7 +11,7 @@ cas:
   #assertion-thread-local-url-patterns: [/*]
 
   #One of CAS3, CAS, or SAML. The default is CAS3 if not explicitly specified
-  validation-type: SAML
+  #validation-type: SAML
 
   #gateway: true
   use-session: false
@@ -39,8 +39,6 @@ server:
     enabled: true
     key-store: /Users/dima767/.keystore
     key-store-password: changeit
-    trust-store: /Users/dima767/.keystore
-    trust-store-password: changeit
   #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
   #context-parameters.renew: true
 
