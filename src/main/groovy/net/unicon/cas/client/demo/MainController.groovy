@@ -2,7 +2,9 @@ package net.unicon.cas.client.demo
 
 import net.unicon.cas.client.configuration.CasClientConfigurerAdapter
 import net.unicon.cas.client.configuration.EnableCasClient
+import org.apereo.cas.util.EncodingUtils
 import org.jasig.cas.client.authentication.AttributePrincipal
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.stereotype.Controller
@@ -10,15 +12,20 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 
+import javax.crypto.Cipher
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+import java.security.PrivateKey
 
 @Controller
 @EnableCasClient
 class MainController extends CasClientConfigurerAdapter {
 
     @Value('${casLogoutUrl}')
-    private String casLogoutUrl;
+    private String casLogoutUrl
+
+    @Autowired
+    private PrivateKey credentialPrivateKey
 
     String getCasLogoutUrl() {
         return casLogoutUrl
@@ -30,10 +37,25 @@ class MainController extends CasClientConfigurerAdapter {
     }
 
     @RequestMapping(value = '/protected', method = RequestMethod.GET)
-    def protected1(HttpServletRequest request, Model model) {
+    def protectedEndpoint(HttpServletRequest request, Model model) {
         AttributePrincipal principal = request.userPrincipal
+
+        //Decrypt incoming encrypted password and swap out its value in the attributes map to pass it to a view for display
+        //Not a solid security practice, just done here to demonstrate the mechanics of it, should such a need arise
+        principal.attributes.credential = decryptPassword(principal.attributes.credential)
+
         model.addAttribute('principal', principal)
         'protected'
+    }
+
+    /**
+     * Password decryption dance
+     */
+    private String decryptPassword(String encryptedPassword) {
+        final Cipher cipher = Cipher.getInstance(this.credentialPrivateKey.algorithm)
+        final byte[] cred64 = EncodingUtils.decodeBase64(encryptedPassword)
+        cipher.init(Cipher.DECRYPT_MODE, this.credentialPrivateKey)
+        new String(cipher.doFinal(cred64))
     }
 
 

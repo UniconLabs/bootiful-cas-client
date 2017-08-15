@@ -21,7 +21,7 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
   ```
 
 * Change SSL settings in `src/main/resources/application.yml` pointing to your local keystore and truststore. For example:
- 
+
  ```yaml
  server:
    port: 8443
@@ -30,10 +30,24 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
      key-store: /Users/dima767/.keystore
      key-store-password: changeit     
  ```
- 
-  > Note: you also might need to do the self-cert generation/importing dance into the JVM's trustore for this CAS client/server SSL handshake to 
-  work properly. 
+
+  > Note: you also might need to do the self-cert generation/importing dance into the JVM's trustore for this CAS client/server SSL handshake to
+  work properly.
 
 * From the command line run: `./gradlew clean bootRun`
 
-* Visit `https://localhost:8443` in the web browser of choice and enjoy the CASyfied Spring Boot app! 
+* Visit `https://localhost:8443` in the web browser of choice and enjoy the CASyfied Spring Boot app!
+
+### Public/Private key-pair for cleearpass to work
+
+* Generate:
+
+```bash
+openssl genrsa -out private.key 1024
+openssl rsa -pubout -in private.key -out credential-public.key -inform PEM -outform DER
+openssl pkcs8 -topk8 -inform PER -outform DER -nocrypt -in private.key -out credential-private.p8
+```
+
+* Move `credential-public.key` and `credential-private.p8` to `src/main/resources`
+
+* Share `credential-public.key` with CAS server and configure it for encrypted credential release as per [documentation](https://apereo.github.io/cas/development/integration/ClearPass.html)

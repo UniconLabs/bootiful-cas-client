@@ -1,3 +1,4 @@
+out/
 .classpath
 .project
 .settings
@@ -12,3 +13,4 @@ bin/
 *.ipr
 *.iws
 requirements/
+credential-private.p8
