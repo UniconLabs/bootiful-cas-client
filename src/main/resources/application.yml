@@ -1,8 +1,8 @@
 cas:
   #Required properties
-  server-url-prefix: https://dk.example.org:8143/cas
-  server-login-url: https://dk.example.org:8143/cas/login
-  client-host-url: https://dk.example.org:8443
+  server-url-prefix: https://localhost:8143/cas
+  server-login-url: https://localhost:8143/cas/login
+  client-host-url:  https://Axman000.local:8443
 
   #Optional properties
   authentication-url-patterns: [/protected, /protected2]
@@ -37,7 +37,7 @@ server:
     tracking-modes: COOKIE
   ssl:
     enabled: true
-    key-store: /Users/dima767/.keystore
+    key-store: /etc/cas/thekeystore
     key-store-password: changeit
   #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
   #context-parameters.renew: true
