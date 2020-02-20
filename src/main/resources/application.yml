@@ -1,8 +1,8 @@
 cas:
   #Required properties
-  server-url-prefix: https://localhost:8143/cas
-  server-login-url: https://localhost:8143/cas/login
-  client-host-url:  https://Axman000.local:8443
+  server-url-prefix: https://dk.example.org:8143/cas
+  server-login-url: https://dk.example.org:8143/cas/login
+  client-host-url: https://dk.example.org:8443
 
   #Optional properties
   authentication-url-patterns: [/protected, /protected2]
