@@ -29,7 +29,7 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
    port: 8443
    ssl:
      enabled: true
-     key-store: /Users/dima767/.keystore
+     key-store: /etc/cas/thekeystore
      key-store-password: changeit     
  ```
  
