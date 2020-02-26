@@ -37,7 +37,7 @@ server:
     tracking-modes: COOKIE
   ssl:
     enabled: true
-    key-store: /Users/dima767/.keystore
+    key-store: /etc/cas/thekeystore
     key-store-password: changeit
   #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
   #context-parameters.renew: true

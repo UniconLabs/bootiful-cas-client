@@ -20,7 +20,7 @@ dependencies {
     compile('org.codehaus.groovy:groovy')
     compile "org.webjars:bootstrap:4.1.3"
 
-    compile('net.unicon.cas:cas-client-autoconfig-support:2.0.0-GA')
+    compile('org.jasig.cas.client:cas-client-support-springboot:3.6.1')
 }
 
 task wrapper(type: Wrapper) {

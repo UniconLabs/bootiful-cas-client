@@ -1,6 +1,6 @@
 ## Bootiful CAS-enabled web application
 
-This is the simplest CASyfied Spring Boot application that there could be. It uses [cas client auto config support](https://github.com/Unicon/cas-client-autoconfig-support)
+This is the simplest CASyfied Spring Boot application that there could be. It uses [official CAS Client](https://github.com/apereo/java-cas-client#spring-boot-autoconfiguration)
 
 It could be used as a template to build more complex CAS-enabled Spring Boot apps, or simply as a quick tester for various CAS servers installations.
 
@@ -9,6 +9,8 @@ It could be used as a template to build more complex CAS-enabled Spring Boot app
 * Make sure you have Java 8 installed (it won't work on Java versions less than 8)
 
 * Clone this repository
+
+* Verify dependency in `build.gradle` for _org.jasig.cas.client:cas-client-support-springboot_ is updated to latest version.
 
 * Change 3 required URL properties in `src/main/resources/application.yml` pointing to the desired CAS server and client host. For example:
 
