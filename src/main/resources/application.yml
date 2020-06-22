@@ -37,8 +37,6 @@ logging:
 #Sample embedded servlet container SSL config and session tracking mode. Change as appropriate for your local deployment environment
 server:
   port: 8443
-  session:
-
   ssl:
     enabled: true
     key-store: /etc/cas/thekeystore
