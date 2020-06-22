@@ -11,6 +11,7 @@
 <div class="container">
     <div class="starter-template">
         <h2>You are in protected area. You are logged in as (<span th:text="${principal}">(principal)</span>)</h2>
+        <h2>Proxy Ticket from CAS server: <span th:text="${PT}">PT-something</span></h2>
         <h3><a th:href="${@mainController.casLogoutUrl}">Log out</a></h3>
     </div>
 

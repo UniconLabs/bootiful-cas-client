@@ -25,14 +25,16 @@ class MainController implements CasClientConfigurer {
     }
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
-    def index(HttpServletRequest request, HttpServletResponse response, Model model) {
+    def index(HttpServletRequest request, HttpServletResponse response) {
         'index'
     }
 
     @RequestMapping(value = '/protected', method = RequestMethod.GET)
     def protected1(HttpServletRequest request, Model model) {
-        AttributePrincipal principal = request.userPrincipal
+        AttributePrincipal principal = request.userPrincipal as AttributePrincipal
+        String pt = principal.getProxyTicketFor("https://dk.example.org:8444/")
         model.addAttribute('principal', principal)
+        model.addAttribute('PT', pt)
         'protected'
     }
 
