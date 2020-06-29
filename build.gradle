@@ -9,6 +9,8 @@ targetCompatibility = 1.8
 
 repositories {
     jcenter()
+    maven { url "https://repo.spring.io/milestone/" }
+    maven { url "https://repo.spring.io/snapshot/" }
     //For local dev against cas-client-autoconfig-support. Do not uncomment this otherwise.
     //mavenLocal()
 }
@@ -21,6 +23,7 @@ dependencies {
     compile "org.webjars:bootstrap:4.1.3"
 
     compile 'org.jasig.cas.client:cas-client-support-springboot:3.6.1'
+    compile 'org.apereo.cas:cas-server-core-util-api:6.1.6'
     compile 'org.bitbucket.b_c:jose4j:0.7.1'
 
 }

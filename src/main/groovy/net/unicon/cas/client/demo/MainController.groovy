@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import java.nio.charset.StandardCharsets
 import java.security.Key
+import java.security.PrivateKey
+import java.security.PublicKey
 import java.security.interfaces.RSAKey
 
 @Controller
@@ -45,6 +47,12 @@ class MainController implements CasClientConfigurer {
     @Autowired
     RestTemplate restTemplate
 
+    @Autowired
+    PublicKey signingPublicKey
+
+    @Autowired
+    PrivateKey decryptionPrivateKey
+
     @RequestMapping(value = '/', method = RequestMethod.GET)
     def index(HttpServletRequest request, HttpServletResponse response) {
         'index'
@@ -53,13 +61,14 @@ class MainController implements CasClientConfigurer {
     @RequestMapping(value = '/protected', method = RequestMethod.GET)
     def protected1(HttpServletRequest request, Model model) {
         String jwt = request.getParameter("ticket")
-        String decodedJwt = decryptJwt(jwt)
-        AttributePrincipal principal = request.userPrincipal as AttributePrincipal
+        decryptJwt2(jwt)
+        //String decodedJwt = decryptJwt(jwt)
+        //AttributePrincipal principal = request.userPrincipal as AttributePrincipal
         //def respFromRestApi = restTemplate.getForObject("https://dk.example.org:8444/data", String)
         //model.addAttribute('jwt', jwt)
         //model.addAttribute("principal", principal)
         //model.addAttribute('dataFromRestApi', respFromRestApi)
-        model.addAttribute('decodedJwt', decodedJwt)
+        model.addAttribute('decodedJwt', jwt)
 
         'protected-jwt'
     }
@@ -92,7 +101,7 @@ class MainController implements CasClientConfigurer {
         jwe.getPlaintextString()
     }
 
-    private static decryptJwt2(String jwt) {
+    private def decryptJwt2(String jwt) {
         AlgorithmConstraints jwsAlgConstraints = new AlgorithmConstraints(AlgorithmConstraints.ConstraintType.PERMIT,
                 AlgorithmIdentifiers.ECDSA_USING_P256_CURVE_AND_SHA256);
 
@@ -108,24 +117,24 @@ class MainController implements CasClientConfigurer {
                 .setRequireSubject() // the JWT must have a subject claim
                 .setExpectedIssuer("sender") // whom the JWT needs to have been issued by
                 .setExpectedAudience("receiver") // to whom the JWT is intended for
-                .setDecryptionKey(receiverJwk.getPrivateKey()) // decrypt with the receiver's private key
-                .setVerificationKey(senderJwk.getPublicKey()) // verify the signature with the sender's public key
+                .setDecryptionKey(decryptionPrivateKey) // decrypt with the receiver's private key
+                .setVerificationKey(signingPublicKey) // verify the signature with the sender's public key
                 .setJwsAlgorithmConstraints(jwsAlgConstraints) // limits the acceptable signature algorithm(s)
                 .setJweAlgorithmConstraints(jweAlgConstraints) // limits acceptable encryption key establishment algorithm(s)
                 .setJweContentEncryptionAlgorithmConstraints(jweEncConstraints) // limits acceptable content encryption algorithm(s)
-                .build(); // create the JwtConsumer instance
+                .build() // create the JwtConsumer instance
 
         try
         {
             //  Validate the JWT and process it to the Claims
-            JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt);
-            System.out.println("JWT validation succeeded! " + jwtClaims);
+            JwtClaims jwtClaims = jwtConsumer.processToClaims(jwt)
+            System.out.println("JWT validation succeeded! " + jwtClaims)
         }
         catch (InvalidJwtException e)
         {
             // InvalidJwtException will be thrown, if the JWT failed processing or validation in anyway.
             // Hopefully with meaningful explanations(s) about what went wrong.
-            System.out.println("Invalid JWT! " + e);
+            System.out.println("Invalid JWT! " + e)
         }
     }
 
