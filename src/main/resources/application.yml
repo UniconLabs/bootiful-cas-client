@@ -15,11 +15,12 @@ cas:
 
   #gateway: true
   use-session: false
-  redirect-after-validation: false
+  #redirect-after-validation: false
   #allowed-proxy-chains: ['https://dk.example.org:8444/']
-  proxy-callback-url: https://dk.example.org:8443/proxy
-  proxy-receptor-url: /proxy
-  accept-any-proxy: true
+  #proxy-callback-url: https://dk.example.org:8443/proxy
+  #proxy-receptor-url: /proxy
+  #accept-any-proxy: true
+  skipTicketValidation: true
 
 casLogoutUrl: https://dk.example.org:8143/cas/logout?service=https://dk.example.org:8443
 
@@ -32,7 +33,7 @@ logging:
   path: /var/log/cas
   level:     
     org.jasig.cas: DEBUG
-    org.springframework: WARN  
+    org.springframework: WARN
 
 #Sample embedded servlet container SSL config and session tracking mode. Change as appropriate for your local deployment environment
 server:
