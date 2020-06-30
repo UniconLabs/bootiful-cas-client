@@ -15,10 +15,10 @@
         <h3><a th:href="${@mainController.casLogoutUrl}">Log out</a></h3>
     </div>
 
-    <div th:if="${not #maps.isEmpty(principal.attributes)}">
+    <div th:if="${not #maps.isEmpty(jwtClaims)}">
         <h2>Principal Attributes</h2>
         <table class="table table-striped">
-            <tr th:each="attr : ${principal.attributes}">
+            <tr th:each="attr : ${jwtClaims}">
                 <td th:text="${attr.key}">Attribute Key</td>
                 <td th:text="${attr.value}">Attribute Value</td>
             </tr>
