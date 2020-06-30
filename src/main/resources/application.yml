@@ -14,8 +14,8 @@ cas:
   validation-type: CAS3
 
   #gateway: true
-  use-session: false
-  #redirect-after-validation: false
+  use-session: true
+  redirect-after-validation: true
   #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://dk.example.org:8443/proxy2']
   #proxy-callback-url: https://dk.example.org:8443/proxy-callback
   #proxy-receptor-url: /proxy-callback
