@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.webjars:bootstrap:4.1.3'
 
     implementation 'org.jasig.cas.client:cas-client-support-springboot:3.6.1'
-    implementation 'org.bitbucket.b_c:jose4j:0.7.1'
+    implementation 'org.bitbucket.b_c:jose4j:0.7.2'
 
 }
 

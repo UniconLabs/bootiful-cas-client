@@ -9,6 +9,10 @@ import org.jose4j.jwt.JwtClaims
 import org.jose4j.keys.AesKey
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
@@ -45,10 +49,16 @@ class MainController implements CasClientConfigurer {
 
     @RequestMapping(value = '/protected', method = RequestMethod.GET)
     def protected1(HttpServletRequest request, Model model) {
-        String jwt = request.getParameter("ticket")
-        JwtClaims jwtClaims = decryptJwt(jwt)
+        String encryptedJwt = request.getParameter("ticket")
+        JwtClaims jwtClaims = decryptJwt(encryptedJwt)
         model.addAttribute('principal', jwtClaims.getClaimsMap().get('sub'))
         model.addAttribute('jwtClaims', jwtClaims.getClaimsMap())
+
+        HttpHeaders headers = new HttpHeaders()
+        headers.setBearerAuth(encryptedJwt)
+        HttpEntity<?> entity = new HttpEntity(headers)
+        ResponseEntity<?> result = restTemplate.exchange("https://dk.example.org:8444/data", HttpMethod.GET, entity, String)
+        model.addAttribute("dataFromRestApi", result.getBody())
 
         'protected'
     }
