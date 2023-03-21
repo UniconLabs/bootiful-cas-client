@@ -31,10 +31,11 @@ spring:
 #Sample embedded servlet container SSL config and session tracking mode. Change as appropriate for your local deployment environment
 server:
   port: 8443
-  session:
-    cookie:
-      http-only: true
-    tracking-modes: COOKIE
+  servlet:
+    session:
+      cookie:
+        http-only: true
+      tracking-modes: COOKIE
   ssl:
     enabled: true
     key-store: /etc/cas/thekeystore
