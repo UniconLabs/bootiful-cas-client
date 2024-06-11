@@ -44,4 +44,4 @@ server:
 
 
 logging.level:
-    org.jasig.cas: DEBUG
+    org.apereo.cas: DEBUG
